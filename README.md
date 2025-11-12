@@ -12,10 +12,10 @@ Hugging face: https://huggingface.co/OpenGVLab/InternVL3-78B
 All models, with C++ examples, can be found on the Q-engineering GitHub.<br><br>
 All llm models are quantized to **w8a8**, while the vision encoders use **fp16**.<br>
 
-| model         | RAM | llm cold<sup>1</sup> | llm warm<sup>2</sup> | vlm cold<sup>1</sup> | vlm warm<sup>2</sup> | Resolution | Tokens/s |
+| model         | RAM (GB) | llm cold<sup>1</sup> | llm warm<sup>2</sup> | vlm cold<sup>1</sup> | vlm warm<sup>2</sup> | Resolution | Tokens/s |
 | --------------| :--: | :-----: | :-----: | :--------: | :-----: | :--------:  | :--------: |
 | Qwen2         | | 29.1 |   2.5 | 17.1  | 1.7 | 392 x 392 | 12.5 |
-| InternVL3-1B  | 1.3 GB |  6.8 |   1.1 | 7.8    | 0.75 | 448 x 448 | 30 |
+| InternVL3-1B  | 1.3 |  6.8 |   1.1 | 7.8    | 0.75 | 448 x 448 | 30 |
 | SmolVLM2-2.2B | | 21.2 |   2.6 | 10.5   | 0.9  | 392 x 392 | 11 |
 | SmolVLM2-500M | |  4.8 |   0.7 | 2.5    | 0.25 | 392 x 392 | 31 |
 | SmolVLM2-256M | |  1.1 |   0.4 | 2.5    | 0.25 | 392 x 392 | 54 |
