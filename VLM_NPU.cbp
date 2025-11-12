@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="TestVLMengine_2" />
+		<Option title="VLM_NPU" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/TestVLMengine_2" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/VLM_NPU" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -18,7 +18,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/TestVLMengine_2" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/VLM_NPU" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -35,22 +35,21 @@
 			<Add option="-Wall" />
 			<Add option="-std=gnu++17" />
 			<Add option="-fexceptions" />
-			<Add option="`pkg-config --cflags gstreamer-1.0 gstreamer-app-1.0 opencv4`" />
+			<Add option="`pkg-config --cflags opencv4`" />
 			<Add directory="/usr/local/include/rockchip" />
 			<Add directory="/usr/local/include/" />
 		</Compiler>
 		<Linker>
 			<Add option="-O3" />
-			<Add option="`pkg-config --libs gstreamer-1.0 gstreamer-app-1.0 opencv4`" />
+			<Add option="`pkg-config --libs opencv4`" />
 			<Add option="-pthread" />
 			<Add option="-lpthread" />
 			<Add option="-lgflags" />
 			<Add library="/usr/local/lib/librknnrt.so" />
 			<Add library="/usr/local/lib/librkllmrt.so" />
-			<Add library="/usr/lib/librga.so" />
 		</Linker>
 		<Unit filename="include/RK35llm.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="src/main.cpp" />
 		<Unit filename="src/RK35llm.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
