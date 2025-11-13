@@ -32,5 +32,5 @@ include_directories(include)
 add_executable(VLM_NPU ${SOURCES})
 target_link_libraries(VLM_NPU ${OPENCV_LIBRARIES} ${RK_LIB_PATH}/librknnrt.so ${RK_LIB_PATH}/librkllmrt.so -fopenmp -ldl -lpthread -lgomp)
 
-set_target_properties(VLM_NPU PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/..")
+set(EXECUTABLE_OUTPUT_PATH "../")
 
