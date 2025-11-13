@@ -7,10 +7,21 @@ Hugging face: https://huggingface.co/OpenGVLab/InternVL3-78B
 
 ------------
 
+## About LLMs and VLMs
+
+LLMs (Large Language Models) are AI models trained to understand and generate human language.<br> 
+They can answer questions, summarise text, or follow instructions based on huge amounts of textual data.<br><br>
+VLMs (Vision-Language Models) extend this idea by combining vision and language.<br> 
+They take both images and text as input, allowing them to see and reason — for example, describing an image, answering visual questions, or aligning visual content with text.<br><br>
+InternVL3 is one such VLM, built on top of an LLM backbone and a vision encoder.<br>
+It fuses image features and text tokens into a single understanding pipeline, enabling rich multimodal reasoning.
+
+------------
+
 ## Model performance benchmark (FPS)
 
 All models, with C++ examples, can be found on the Q-engineering GitHub.<br><br>
-All llm models are quantized to **w8a8**, while the vision encoders use **fp16**.<br>
+All LLM models are quantized to **w8a8**, while the VLM vision encoders use **fp16**.<br>
 
 | model         | RAM (GB) | llm cold<sup>1</sup> | llm warm<sup>2</sup> | vlm cold<sup>1</sup> | vlm warm<sup>2</sup> | Resolution | Tokens/s |
 | --------------| :--: | :-----: | :-----: | :--------: | :-----: | :--------:  | :--------: |
