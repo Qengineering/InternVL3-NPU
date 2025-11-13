@@ -1,8 +1,5 @@
 #include "RK35llm.h"
 
-//./CatDog.jpg ./models/InternVL3-1B/internvl3-1b_vision_fp16_rk3588.rknn ./models/InternVL3-1B/internvl3-1b_w8a8_rk3588.rkllm 2048 4096 3
-//./car_6.jpg ../VLM/Qwen2-VL-2B/models/Qwen2-VL-2B_vision_rk3588.rknn ../VLM/Qwen2-VL-2B/models/Qwen2-VL-2B_llm_w8a8_rk3588.rkllm 2048 4096 3
-
 int main(int argc, char** argv)
 {
     std::string input_str;
