@@ -33,7 +33,7 @@ Despite these limits, models like InternVL3 run well on the RK3588 because the N
 All models, with C++ examples, can be found on the Q-engineering GitHub.<br><br>
 All LLM models are quantized to **w8a8**, while the VLM vision encoders use **fp16**.<br>
 
-| model         | RAM (GB) | llm cold<sup>1</sup> | llm warm<sup>2</sup> | vlm cold<sup>1</sup> | vlm warm<sup>2</sup> | Resolution | Tokens/s |
+| model         | RAM (GB) | llm cold sec<sup>1</sup> | llm warm sec<sup>2</sup> | vlm cold sec<sup>1</sup> | vlm warm sec<sup>2</sup> | Resolution | Tokens/s |
 | --------------| :--: | :-----: | :-----: | :--------: | :-----: | :--------:  | :--------: |
 | Qwen2         | | 29.1 |   2.5 | 17.1  | 1.7 | 392 x 392 | 12.5 |
 | InternVL3-1B  | 1.3 |  6.8 |   1.1 | 7.8    | 0.75 | 448 x 448 | 30 |
