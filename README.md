@@ -1,6 +1,7 @@
 # InternVL3 NPU
 ![Alt text](https://github.com/user-attachments/assets/6d297a34-c516-4cb1-be4a-bca471d40fa6)
-**user**: 
+<br><br>**User**:\<image\>Describe the image.<br><br>
+**Answer**: The image depicts an astronaut in a white space suit lounging on the moon's surface with a green bottle of soda in hand. The background features Earth from space and part of a lunar module, suggesting a surreal scene. The setting is dramatic, with the vastness of space surrounding the astronaut and the Moon itself.
 
 ## InternVL3 VLM for RK3588 NPU (Rock 5, Orange Pi 5). <br/>
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)<br/><br/>
@@ -9,14 +10,19 @@ Hugging face: https://huggingface.co/OpenGVLab/InternVL3-78B
 
 ------------
 
-## About LLMs and VLMs
+## Introduction
 
-LLMs (Large Language Models) are AI models trained to understand and generate human language.<br> 
-They can answer questions, summarise text, or follow instructions based on huge amounts of textual data.<br><br>
-VLMs (Vision-Language Models) extend this idea by combining vision and language.<br> 
-They take both images and text as input, allowing them to see and reason — for example, describing an image, answering visual questions, or aligning visual content with text.<br><br>
-InternVL3 is one such VLM, built on top of an LLM backbone and a vision encoder.<br>
-It fuses image features and text tokens into a single understanding pipeline, enabling rich multimodal reasoning.
+LLMs (Large Language Models) are neural networks trained on large text datasets to understand and generate language.<br>
+VLMs (Vision-Language Models) add a visual encoder so the model can process images and text together.<br> 
+A combined VLM+LLM system is often referred to as a multimodal model.
+
+These models can be large—hundreds of millions to billions of parameters—which impacts accuracy, memory use, and runtime speed.<br>
+On edge devices like the RK3588, available RAM and compute are limited, and even the NPU has strict constraints on supported operations.<br>
+Because of this, models typically need to be quantised or simplified to fit.
+
+Performance is usually expressed in tokens (words) per second.<br>
+Once converted to RKNN, parts of the model can run on the NPU, improving speed.<br>
+Despite these limits, models like InternVL3 run well on the RK3588 because the NPU efficiently accelerates the heavy math, and the vision encoder can be optimised. This makes advanced multimodal AI feasible on small, power-efficient devices.
 
 ------------
 
@@ -127,5 +133,60 @@ More info or if you want to connect a camera to the app, follow the instructions
 ------------
 
 [![paypal](https://qengineering.eu/images/TipJarSmall4.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CPZTM5BB3FCYL) 
+
+------------
+
+## InternVL3 LLM example.
+Notice the nice Markdown makeup of the answer!<br><br>
+**User**: Can you make me a C++ call that embeds the Pythagorean theorem?<br><br>
+**Answer**: Certainly! The Pythagorean theorem is a fundamental principle in geometry stating that in a right-angled triangle, the square of the length of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the lengths of the other two sides. In mathematical terms:
+
+\[ c^2 = a^2 + b^2 \]
+
+where \( c \) is the length of the hypotenuse, and \( a \) and \( b \) are the lengths of the other two sides.
+
+To implement this in C++, you can use the following code snippet. This example will calculate the distance between two points using the Pythagorean theorem:
+
+```cpp
+#include <iostream>
+#include <cmath> // For sqrt function
+
+// Function to calculate the Euclidean distance between two points (x1, y1) and (x2, y2)
+double calculateDistance(double x1, double y1, double x2, double y2) {
+    return std::sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+}
+
+int main() {
+    // Coordinates of the two points
+    double x1 = 3.0;
+    double y1 = 4.0;
+    double x2 = 6.0;
+    double y2 = 8.0;
+
+    // Calculate the distance using the Pythagorean theorem
+    double distance = calculateDistance(x1, y1, x2, y2);
+
+    // Output the result
+    std::cout << "The distance between points (" << x1 << ", " << y1 << ") and (" << x2 << ", " << y2 << ") is: " << distance << std::endl;
+
+    return 0;
+}
+```
+
+### Explanation:
+1. **Include Necessary Headers**: The `#include <iostream>` header is used for input-output operations, and the `#include <cmath>` header provides access to mathematical functions like `sqrt`.
+
+2. **Function Definition**:
+   - `double calculateDistance(double x1, double y1, double x2, double y2)`: This function takes four parameters representing the coordinates of two points in a 2D plane and returns the Euclidean distance between them.
+
+3. **Main Function**:
+   - The main function initializes the coordinates of the two points.
+   - It then calls `calculateDistance` to compute the distance using the Pythagorean theorem.
+   - Finally, it prints out the calculated distance.
+
+This code will output the distance between the points (3, 4) and (6, 8), which is approximately 5.196152.
+
+Feel free to modify the coordinates or use this as a starting point for other geometric calculations!
+
 
 
