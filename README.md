@@ -1,5 +1,7 @@
 # InternVL3 NPU
-![output image]( https://qengineering.eu/github/YoloV5_Parking_NPU.webp )
+![Alt text](https://github.com/user-attachments/assets/6d297a34-c516-4cb1-be4a-bca471d40fa6)
+**user**: 
+
 ## InternVL3 VLM for RK3588 NPU (Rock 5, Orange Pi 5). <br/>
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)<br/><br/>
 Paper: [InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models](https://arxiv.org/pdf/2504.10479)<br/><br/>
