@@ -67,31 +67,27 @@ Or, when you have no intentions to program code:
 ```
 $ sudo apt-get install lib-opencv-dev 
 ```
+------------
+
+## Installing the app.
+```
+$ git clone https://github.com/Qengineering/InternVL3-NPU.git
+```
+
 #### RKLLM, RKNN
 
 To run InternVL3, you need to have the **rkllm-runtime** library version **1.2.2** (or higher) installed, as well as the **rknpu driver** version **0.9.8**.<br>
 If you don't have these on your machine, or if you have a lower version, you need to install them.<br>
 We have provide the correct versions in the repo.<br>
 ```
-$ cd ~/InternVL3-NPU/aarch64/library
+$ cd ./InternVL3-NPU/aarch64/library
 $ sudo cp ./*.so /usr/local/lib
-$ cd ~/InternVL3-NPU/aarch64/include
+$ cd ./InternVL3-NPU/aarch64/include
 $ sudo cp ./*.h /usr/local/include
 ```
+### Download the LLM and VLM model.
 
-------------
-
-## Installing the app.
-To extract and run the network in Code::Blocks <br/>
-```
-$ mkdir *MyDir* <br/>
-$ cd *MyDir* <br/>
-$ git clone https://github.com/Qengineering/YoloV5-NPU.git <br/>
-```
-
-------------
-
-## Running the app.
+### Running the app.
 You can use **Code::Blocks**.
 - Load the project file *.cbp in Code::Blocks.
 - Select _Release_, not Debug.
@@ -100,13 +96,11 @@ You can use **Code::Blocks**.
 
 Or use **Cmake**.
 ```
-$ cd *MyDir*
 $ mkdir build
 $ cd build
 $ cmake ..
 $ make -j4
 ```
-Make sure you use the model fitting your system.<br><br>
 
 ------------
 
