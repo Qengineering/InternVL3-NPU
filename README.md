@@ -129,16 +129,12 @@ $ make -j4
 ```
 Make sure you use the model fitting your system.<br><br>
 
-| model         | RAM (GB) | llm cold sec<sup>1</sup> | llm warm sec<sup>2</sup> | vlm cold sec<sup>1</sup> | vlm warm sec<sup>2</sup> | Resolution | Tokens/s |
-| --------------| :--: | :-----: | :-----: | :--------: | :-----: | :--------:  | :--------: |
-|      ![Singapore_S](https://github.com/user-attachments/assets/e742059a-3bdb-41be-9647-e7767da12ce6)
-    | | 29.1 |   2.5 | 17.1  | 1.7 | 392 x 392 | 12.5 |
-| ![ChineseWall_S](https://github.com/user-attachments/assets/3ba4b57a-4b22-4050-b995-9599c6d239de)
- | 1.3 |  6.8 |   1.1 | 7.8    | 0.75 | 448 x 448 | 30 |
-| ![Pizza_S](https://github.com/user-attachments/assets/26fd5da3-f491-4b48-978a-14eae0819247)
- | | 21.2 |   2.6 | 10.5   | 0.9  | 392 x 392 | 11 |
-| ![Titanic_S](https://github.com/user-attachments/assets/bf6da76c-c9a4-41c6-bea1-2b4411dd4013)
- | |  4.8 |   0.7 | 2.5    | 0.25 | 392 x 392 | 31 |
+| Image         | Dialog |
+| --------------| --  |
+| ![Singapore_S](https://github.com/user-attachments/assets/e742059a-3bdb-41be-9647-e7767da12ce6) |**User**: <image>Which city is this?<br><br>**Answer**: This image shows Singapore's iconic skyline at sunset. The distinctive Marina Bay Sands and the ArtScience Museum are prominent landmarks in Singapore. | 
+| ![ChineseWall_S](https://github.com/user-attachments/assets/3ba4b57a-4b22-4050-b995-9599c6d239de) |**User**: <image>Tell me something about the history of this place.<br><br>**Answer**: The Great Wall of China is an ancient defensive structure that has been built over thousands of years to protect against invasions from northern nomadic tribes. The wall stretches across central China, connecting the north and south of the country. It was constructed by the Chinese dynasties during the Qin Dynasty (221-206 BCE) and later expanded under various rulers including the Ming Dynasty (1368-1644). The Great Wall is not only a testament to engineering prowess but also a symbol of China's historical resilience and cultural heritage.|
+| ![Pizza_S](https://github.com/user-attachments/assets/26fd5da3-f491-4b48-978a-14eae0819247) |**User**: <image>What are the ingredients I need to make this?<br><br>**Answer**: To make this pizza, you'll need:<br>  1.**Pizza Dough**: This is typically made from flour, water, yeast, and other ingredients.<br> 2. **Tomato Sauce**: A rich tomato-based sauce that provides flavor and color.<br> 3. **Cheese**: Mozzarella or another type of cheese for the melted cheese topping.<br> 4. **Fresh Basil Leaves**: For garnish and added freshness.<br>You can also add toppings like pepperoni, mushrooms, olives, or meats depending on your preference.<br><br>**User**: What is the first step?<br><br>**Answer**: The first step to making this pizza involves preparing the dough. Here's what you'll need:<br>1. **Prepare the Dough**:<br>- **Ingredients**:<br>2 cups of all-purpose flour<br>3 teaspoons of active dry yeast<br>4 tablespoons of warm water (around 105°F to 115°F)<br>1 teaspoon of salt<br>- **Instructions**:<br>1. In a large mixing bowl, combine the flour and salt.<br>2. Add the warm water and yeast mixture, stirring until the dough starts to come together.<br>3. Knead the dough on a floured surface for about 5 minutes, until it becomes smooth and elastic.<br>4. Place the dough in a lightly oiled bowl, cover with a damp cloth, and let it rise in a warm place for about 1 hour, or until doubled in size.<br>This will give you a soft, elastic pizza crust that will be great for your delicious homemade pizza!|
+| ![Titanic_S](https://github.com/user-attachments/assets/bf6da76c-c9a4-41c6-bea1-2b4411dd4013) |**User**: <image>Which movie is this?<br><br>**Answer**: This image appears to be from the movie "The Little Mermaid." It shows two characters on a ship at sunset, with one reaching out towards the sea. The setting and costumes suggest it's from the Disney film series.|
 
 
 ------------
