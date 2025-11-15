@@ -68,36 +68,15 @@ Or, when you have no intentions to program code:
 $ sudo apt-get install lib-opencv-dev 
 ```
 #### RKLLM, RKNN
-```
-$ git clone https://github.com/airockchip/rknn-toolkit2.git
-```
-We only use a few files.
-```
-rknn-toolkit2-master
-│      
-└── rknpu2
-    │      
-    └── runtime
-        │       
-        └── Linux
-            │      
-            └── librknn_api
-                ├── aarch64
-                │   └── librknnrt.so
-                └── include
-                    ├── rknn_api.h
-                    ├── rknn_custom_op.h
-                    └── rknn_matmul_api.h
 
-$ cd ~/rknn-toolkit2-master/rknpu2/runtime/Linux/librknn_api/aarch64
-$ sudo cp ./librknnrt.so /usr/local/lib
-$ cd ~/rknn-toolkit2-master/rknpu2/runtime/Linux/librknn_api/include
-$ sudo cp ./rknn_* /usr/local/include
+To run InternVL3, you need to have the **rkllm-runtime** library version **1.2.2** (or higher) installed, as well as the **rknpu driver** version **0.9.8**.<br>
+If you don't have these on your machine, or if you have a lower version, you need to install them.<br>
+We have provide the correct versions in the repo.<br>
 ```
-Save 2 GB of disk space by removing the toolkit. We do not need it anymore.
-```
-$ cd ~
-$ sudo rm -rf ./rknn-toolkit2-master
+$ cd ~/InternVL3-NPU/aarch64/library
+$ sudo cp ./*.so /usr/local/lib
+$ cd ~/InternVL3-NPU/aarch64/include
+$ sudo cp ./*.h /usr/local/include
 ```
 
 ------------
