@@ -129,8 +129,17 @@ $ make -j4
 ```
 Make sure you use the model fitting your system.<br><br>
 
-More info or if you want to connect a camera to the app, follow the instructions at [Hands-On](https://qengineering.eu/deep-learning-examples-on-raspberry-32-64-os.html#HandsOn).<br/><br/>
-![output image]( https://qengineering.eu/github/YoloV5_Bus_NPU.webp )
+| model         | RAM (GB) | llm cold sec<sup>1</sup> | llm warm sec<sup>2</sup> | vlm cold sec<sup>1</sup> | vlm warm sec<sup>2</sup> | Resolution | Tokens/s |
+| --------------| :--: | :-----: | :-----: | :--------: | :-----: | :--------:  | :--------: |
+|      ![Singapore_S](https://github.com/user-attachments/assets/e742059a-3bdb-41be-9647-e7767da12ce6)
+    | | 29.1 |   2.5 | 17.1  | 1.7 | 392 x 392 | 12.5 |
+| ![ChineseWall_S](https://github.com/user-attachments/assets/3ba4b57a-4b22-4050-b995-9599c6d239de)
+ | 1.3 |  6.8 |   1.1 | 7.8    | 0.75 | 448 x 448 | 30 |
+| ![Pizza_S](https://github.com/user-attachments/assets/26fd5da3-f491-4b48-978a-14eae0819247)
+ | | 21.2 |   2.6 | 10.5   | 0.9  | 392 x 392 | 11 |
+| ![Titanic_S](https://github.com/user-attachments/assets/bf6da76c-c9a4-41c6-bea1-2b4411dd4013)
+ | |  4.8 |   0.7 | 2.5    | 0.25 | 392 x 392 | 31 |
+
 
 ------------
 
