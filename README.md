@@ -152,18 +152,25 @@ int main(int argc, char** argv)
 
     while(true) {
         printf("\n");
-        printf("user: ");
+        printf("User: ");
 
         std::getline(std::cin, input_str);
         if (input_str == "exit") break;
 
         output_str = RKLLM.Ask(input_str);
-//        std::cout << "\nLLM Reply: " << output_str << std::endl;
+//        std::cout << "\nLLM Answer: " << output_str << std::endl;
     }
 
     return 0;
 }
-``
+```
+Most code speaks for itself. One remark.<br>
+The LLM generates the answer to your request in little pieces of text. You see them as if the LLM is typing on your terminal.<br>
+RKLLM.SetSilence controls this behaviour. When set to `true`, it will suppress this output. RKLLM.Ask() also returns the complete answer.<br>
+In main.cpp uncomment this line:
+```cpp
+std::cout << "\nLLM Answer: " << output_str << std::endl;
+```
 
 ------------
 
