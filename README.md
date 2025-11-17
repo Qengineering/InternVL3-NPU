@@ -75,19 +75,24 @@ $ git clone https://github.com/Qengineering/InternVL3-NPU.git
 ```
 
 #### RKLLM, RKNN
-
 To run InternVL3, you need to have the **rkllm-runtime** library version **1.2.2** (or higher) installed, as well as the **rknpu driver** version **0.9.8**.<br>
 If you don't have these on your machine, or if you have a lower version, you need to install them.<br>
-We have provide the correct versions in the repo.<br>
-```
+We have provided the correct versions in the repo.<br>
+```bash
 $ cd ./InternVL3-NPU/aarch64/library
 $ sudo cp ./*.so /usr/local/lib
 $ cd ./InternVL3-NPU/aarch64/include
 $ sudo cp ./*.h /usr/local/include
 ```
 ### Download the LLM and VLM model.
+The next step is downloading the models.<br>
+This time, we used the original model supplied by Rockchips [rkllm_model_zoo](https://console.box.lenovo.com/l/l0tXb8) (44 GB!), fetch code: rkllm.<br><br>
+Better to download only the two needed files (1.5 GB) from our Sync.com server:<br>
+[internvl3-1b_w8a8_rk3588.rkllm](https://ln5.sync.com/dl/2ac529d30#49g27fih-qe8mjmu9-prmas7px-uuyua5te) and [internvl3-1b_vision_fp16_rk3588.rknn](https://ln5.sync.com/dl/b565d2360#wmbmdbum-tk36pehc-5t4irskd-7gb6kfti)<br>
+Copy both to your `./model` folder.
 
-### Running the app.
+### Building the app.
+Once you have the two models, it is time to build your application.<br>
 You can use **Code::Blocks**.
 - Load the project file *.cbp in Code::Blocks.
 - Select _Release_, not Debug.
@@ -101,6 +106,32 @@ $ cd build
 $ cmake ..
 $ make -j4
 ```
+### Running the app.
+The app has the following arguments.
+```bash
+VLM_NPU Picture RKNN_model RKLLM_model NewTokens ContextLength
+```
+| Argument   | Comment |
+| --------------| --  |
+| picture | The image. Provide a dummy if you don't want to use an image | 
+| RKNN_model | The visual encoder model (vlm) | 
+| RKLLM_model | The large language model (llm) | 
+| NewTokens | This sets the maximum number of new tokens. Default 2048| 
+| ContextLength | This specifies the maximum total number of tokens the model can process. Default 4096| 
+
+<br>In the context of the Rockchip RK3588 LLM (Large Language Model) library, the parameters NewTokens and ContextLength both control different limits for text generation, and they're typical in LLM workflows.<br>
+**NewTokens**<br> 
+This sets the maximum number of tokens (pieces of text, typically sub-word units) that the model is allowed to generate in response to a prompt during a single inference round. For example, if set to 300, the model will not return more than 300 tokens as output, regardless of the prompt length. It's important for controlling generation length to avoid too-short or too-long responses, helping manage resource use and output size.<br>
+**ContextLength**<br>
+This specifies the maximum total number of tokens the model can process in one go, which includes both the prompt (input) tokens and all generated tokens. For example, if set to 2048 and your prompt already uses 500 tokens, the model can generate up to 2048-500 = 1548 new tokens. This is a hardware and architecture constraint set during model conversion and deployment, as the context window cannot exceed the model's design limit (for instance, 4096 or 8192 tokens depending on the model variant).
+
+A typical command line can be:
+```bash
+VLM_NPU ./Moon.jpg ./models/internvl3-1b_vision_fp16_rk3588.rknn ./model/internvl3-1b_w8a8_rk3588.rkllm NewTokens ContextLength
+```
+
+    ​
+
 
 ------------
 
