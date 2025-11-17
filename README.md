@@ -130,9 +130,15 @@ A typical command line can be:
 VLM_NPU ./Moon.jpg ./models/internvl3-1b_vision_fp16_rk3588.rknn ./models/internvl3-1b_w8a8_rk3588.rkllm 2048 4096
 ```
 The NewTokens (2048) and ContextLength (4096) are optional and can be omitted.
-    ​
+### Using the app.
+Using the application is simple. Once you provide the image and the models, you can ask everything you want.<br>
+Remember, we are on a bare Rock5C, so don't expect the same quality answers as ChatGPT can provide.<br>
+On the other hand, when you see the examples below, the app performs amazingly well.<br><br>
+If you want to talk about the picture, you need to include the token `<image>` in your prompt once.<br>
+The app remembers the dialogue until you give the token `<clear>`.<br>
+With `<exit>`, you leave the application.
 ### C++ code.  
-Below you find the surprisingly little code of main.cpp. 
+Below, you find the surprisingly little code of main.cpp. 
 ```cpp
 #include "RK35llm.h"
 
@@ -142,10 +148,13 @@ int main(int argc, char** argv)
     std::string output_str;
     RK35llm RKLLM;
 
-    RKLLM.SetInfo(true);		//yes, you may give me additional model information
-    RKLLM.SetSilence(false);	//you may print incremental text chunks on the terminal
+    RKLLM.SetInfo(true);            //yes, you may give me additional model information
+    RKLLM.SetSilence(false);        //you may print the incremental text chunks on the terminal
 
-    RKLLM.LoadModel(argv[2],argv[3]);
+    if     (argc< 4) {std::cerr << "Usage: " << argv[0] << " image vlm_model llm_model [option]NewTokens [option]ContextLength\n"; return -1;}
+    else if(argc==4) RKLLM.LoadModel(argv[2],argv[3]);
+    else if(argc==5) RKLLM.LoadModel(argv[2],argv[3],std::atoi(argv[4]));
+    else if(argc> 5) RKLLM.LoadModel(argv[2],argv[3],std::atoi(argv[4]),std::atoi(argv[5]));
 
     cv::Mat Pic = cv::imread(argv[1]);
     RKLLM.LoadImage(Pic);
@@ -158,7 +167,7 @@ int main(int argc, char** argv)
         if (input_str == "exit") break;
 
         output_str = RKLLM.Ask(input_str);
-//        std::cout << "\nLLM Answer: " << output_str << std::endl;
+//        std::cout << "\nLLM Reply: " << output_str << std::endl;
     }
 
     return 0;
