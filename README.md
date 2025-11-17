@@ -116,8 +116,8 @@ VLM_NPU Picture RKNN_model RKLLM_model NewTokens ContextLength
 | picture | The image. Provide a dummy if you don't want to use an image | 
 | RKNN_model | The visual encoder model (vlm) | 
 | RKLLM_model | The large language model (llm) | 
-| NewTokens | This sets the maximum number of new tokens. Default 2048| 
-| ContextLength | This specifies the maximum total number of tokens the model can process. Default 4096| 
+| NewTokens | This sets the maximum number of new tokens. Optional, default 2048| 
+| ContextLength | This specifies the maximum total number of tokens the model can process. Optional, default 4096| 
 
 <br>In the context of the Rockchip RK3588 LLM (Large Language Model) library, the parameters NewTokens and ContextLength both control different limits for text generation, and they're typical in LLM workflows.<br>
 **NewTokens**<br> 
@@ -127,9 +127,9 @@ This specifies the maximum total number of tokens the model can process in one g
 
 A typical command line can be:
 ```bash
-VLM_NPU ./Moon.jpg ./models/internvl3-1b_vision_fp16_rk3588.rknn ./model/internvl3-1b_w8a8_rk3588.rkllm NewTokens ContextLength
+VLM_NPU ./Moon.jpg ./models/internvl3-1b_vision_fp16_rk3588.rknn ./models/internvl3-1b_w8a8_rk3588.rkllm 2048 4096
 ```
-
+The NewTokens (2048) and ContextLength (4096) are optional and can be omitted.
     ​
 
 
