@@ -1,4 +1,6 @@
 #include "RK35llm.h"
+
+#define HISTORY true
 //----------------------------------------------------------------------------------------
 RK35llm::RK35llm(void)
 {
@@ -12,8 +14,10 @@ RK35llm::RK35llm(void)
     memset(&rkllm_infer_params, 0, sizeof(RKLLMInferParam));
 
     rkllm_infer_params.mode = RKLLM_INFER_GENERATE;
+#if HISTORY
     rkllm_infer_params.keep_history = 1;
     rkllm_set_chat_template(llmHandle, "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n", "<|im_start|>user\n", "<|im_end|>\n<|im_start|>assistant\n");
+#endif
 
     param = rkllm_createDefaultParam();
     param.top_k = 1;
