@@ -13,12 +13,6 @@ RK35llm::RK35llm(void)
     memset(&rkllm_input, 0, sizeof(RKLLMInput));
     memset(&rkllm_infer_params, 0, sizeof(RKLLMInferParam));
 
-    rkllm_infer_params.mode = RKLLM_INFER_GENERATE;
-#if HISTORY
-    rkllm_infer_params.keep_history = 1;
-    rkllm_set_chat_template(llmHandle, "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n", "<|im_start|>user\n", "<|im_end|>\n<|im_start|>assistant\n");
-#endif
-
     param = rkllm_createDefaultParam();
     param.top_k = 1;
     param.skip_special_token = true;
@@ -47,7 +41,7 @@ RK35llm::~RK35llm(void)
         ImgVec = nullptr;
     }
 
-    rkllm_destroy(llmHandle);
+    if(llmHandle!=nullptr) rkllm_destroy(llmHandle);
 }
 //----------------------------------------------------------------------------------------
 void RK35llm::DumpTensorAttr(rknn_tensor_attr* attr)
@@ -292,6 +286,21 @@ bool RK35llm::LoadModel(const std::string& VLMmodel, const std::string& LLMmodel
     else{
         if(Info) printf("rkllm init success\n");
     }
+    // IMPORTANT: only set chat template after rkllm_init succeeded and llmHandle is valid
+
+    #if HISTORY
+        rkllm_infer_params.keep_history = 1;
+        // check return value (good practice)
+        int setret = rkllm_set_chat_template(llmHandle,
+             "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n",
+             "<|im_start|>user\n",
+             "<|im_end|>\n<|im_start|>assistant\n");
+        if (setret != 0 && Info) {
+            printf("rkllm_set_chat_template returned %d\n", setret);
+        }
+    #else
+        rkllm_infer_params.keep_history = 0;
+    #endif
 
     ret = InitImgEnc(VLMmodel.c_str());
     if(ret != 0) return false;
